@@ -1,0 +1,118 @@
+@prefix_scrollsnap: scrollsnap; // slider Variable definieren
+
+.@{prefix_scrollsnap} {
+	
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		opacity: 0.2;
+		filter: invert(1);
+		background: url("../../assets/graph-paper.svg");
+	}
+	
+	&__scroller {
+		/* Wichtig: Scroll-Snap-Typ definieren */
+		scroll-snap-type: x mandatory;
+		display: flex;
+		overflow-x: scroll;
+		-webkit-overflow-scrolling: touch; /* iOS-Optimierung */
+		width: 100%; /* Behält die Breite des Containers bei */
+		height: 400px; /* Höhe festlegen, damit die Bilder passen */
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		
+		/* Optional: Scrollbar ausblenden für eine sauberere Ansicht */
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+		
+		&::-webkit-scrollbar {
+			display: none;
+		}
+		
+		/* Wenn die Maus gedrückt wird, ändert sich der Cursor */
+		
+		&:active {
+			cursor: grabbing;
+		}
+	}
+	
+	&__item {
+		/* Jedes Bild nimmt genau 100% der Scroll-Container-Breite ein */
+		flex: 0 0 100%;
+		/* Wichtig: Hier rasten die Bilder ein */
+		scroll-snap-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end; /* Caption unten */
+		position: relative;
+		
+		/* Setzt die Breite jedes Slides auf 50% der Containerbreite */
+		flex: 0 0 50%;
+		
+		scroll-snap-align: start;
+		//Das erste sichtbare Slide im Viewport rastet am linken Rand
+		
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover; /* Passt das Bild an, ohne es zu verzerren */
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
+			/* Deaktiviert das native Ziehen des Bildes */
+			user-drag: none;
+			-webkit-user-drag: none; /* Wichtig für Chrome, Safari */
+			
+			/* Stellt sicher, dass keine Textauswahl stattfindet */
+			user-select: none;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+		}
+		
+		figcaption {
+			background: rgba(0, 0, 0, 0.7);
+			color: white;
+			padding: 10px;
+			text-align: center;
+			width: 100%;
+			z-index: 2; /* Über dem Bild */
+			font-family: sans-serif;
+		}
+	}
+	
+	&__dots {
+		.gallery-dots {
+			text-align: center;
+			padding: 15px 0;
+		}
+		
+		.dot-button {
+			background: #cccccc;
+			border: none;
+			border-radius: 50%;
+			width: 12px;
+			height: 12px;
+			margin: 0 5px;
+			cursor: pointer;
+			transition: background 0.3s, transform 0.2s;
+			
+			/* Wichtig für Barrierefreiheit: Unsichtbarer Text für Screenreader */
+			overflow: hidden;
+			text-indent: 100%;
+			white-space: nowrap;
+		}
+		
+		.dot-button:hover,
+		.dot-button:focus {
+			background: #888888;
+		}
+		
+		.dot-button.active,
+		.dot-button[aria-current="true"] {
+			background: #333333;
+			transform: scale(1.2);
+		}
+		
+	}
+}
