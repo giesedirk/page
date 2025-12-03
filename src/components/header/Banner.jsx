@@ -1,6 +1,6 @@
 export const Banner = () => {
 	return (
-		<nav className="banner">
+		<div className="banner">
 			<ul>
 				<li className="icon-tel">
 					<a className="icon-phone">
@@ -19,6 +19,6 @@ export const Banner = () => {
 					</a>
 				</li>
 			</ul>
-		</nav>
+		</div>
 	)
 }
