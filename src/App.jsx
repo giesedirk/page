@@ -11,12 +11,11 @@ function App() {
 	return (
 		<>
 			{/*
-
-			<Main/>
 			<Footer/>
 			<ScrollSnap/>
 			*/}
 			<Header/>
+			<Main/>
 		</>
 	)
 }
