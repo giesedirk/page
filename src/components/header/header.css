@@ -3,11 +3,8 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100svh;
   width: 100%;
-}
-header img {
-  height: 100%;
 }
 .banner {
   position: absolute;
@@ -54,7 +51,19 @@ header img {
   padding: 0;
   margin: 0;
 }
+.gallery {
+  height: 100svh;
+  width: 100%;
+  overflow: hidden;
+}
 .gallery img {
   height: 100%;
+  width: 100%;
+}
+.widget {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 /*# sourceMappingURL=header.css.map */

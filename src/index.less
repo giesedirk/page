@@ -42,6 +42,20 @@
 
 #root {
 	width: 100%;
+	max-width: 1920px;
+	display: flex; // ohne das hat das main ein abstand von 1em
+	flex-direction: column;
+	margin-inline: auto;
+}
+
+a {
+	font-weight: 500;
+	color: #646cff;
+	text-decoration: inherit;
+}
+
+.paper {
+	position: relative;
 	
 	&::before {
 		content: "";
@@ -51,12 +65,6 @@
 		filter: invert(1);
 		background: url("./graph-paper.svg");
 	}
-}
-
-a {
-	font-weight: 500;
-	color: #646cff;
-	text-decoration: inherit;
 }
 
 a:hover {
@@ -99,9 +107,9 @@ button {
 }
 
 img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+	width: 100%;
+	height: auto;
+	object-fit: cover;
 }
 
 @media (prefers-color-scheme: light) {

@@ -17,6 +17,7 @@ function App() {
 			<ScrollSnap/>
 			*/}
 			<Header/>
+			<Main/>
 		</>
 	)
 }
